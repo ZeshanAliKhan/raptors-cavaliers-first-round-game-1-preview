@@ -5,6 +5,9 @@
   --muted: #655c68;
   --line: #2f2430;
   --line-soft: #b7aab6;
+  --border-start: #8b5cf6;
+  --border-end: #9d4edd;
+  --border-glow: rgba(139, 92, 246, 0.16);
   --magic: #ce1141;
   --sixers: #6f263d;
   --silver: #efe7f0;
@@ -164,24 +167,49 @@ a:hover {
 h1,
 h2,
 h3 {
+  color: #211825;
   letter-spacing: 0;
   line-height: 1.08;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 4.45rem;
+  font-size: 4.3rem;
+  font-weight: 900;
   margin: 1rem 0 1rem;
   max-width: 960px;
 }
 
 h2 {
-  font-size: 2.65rem;
+  font-size: 2.55rem;
+  font-weight: 900;
   margin: 0 0 1rem;
 }
 
 h3 {
   font-size: 1.2rem;
+  font-weight: 900;
   margin: 0 0 0.55rem;
+}
+
+h1::after,
+h2::after {
+  background: linear-gradient(90deg, var(--border-start), var(--sixers), var(--gold));
+  border-radius: 999px;
+  content: "";
+  display: block;
+}
+
+h1::after {
+  height: 6px;
+  margin-top: 0.9rem;
+  width: min(190px, 34vw);
+}
+
+h2::after {
+  height: 4px;
+  margin-top: 0.65rem;
+  width: 78px;
 }
 
 p {
@@ -235,19 +263,23 @@ p {
 .image-frame,
 .toc,
 .stat-table {
-  background: linear-gradient(180deg, #ffffff, #fbf8fc);
-  border: 2px solid var(--line-soft);
+  background:
+    linear-gradient(180deg, #ffffff, #fbf8fc) padding-box,
+    linear-gradient(135deg, rgba(139, 92, 246, 0.75), rgba(111, 38, 61, 0.42), rgba(255, 184, 28, 0.48)) border-box;
+  border: 2px solid transparent;
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
 
 .hero-card {
-  border-color: rgba(111, 38, 61, 0.34);
+  box-shadow: 0 22px 48px rgba(23, 19, 26, 0.13), 0 0 0 1px rgba(139, 92, 246, 0.08);
   overflow: hidden;
 }
 
 .scoreboard {
-  border-color: rgba(111, 38, 61, 0.34);
+  background:
+    linear-gradient(180deg, #ffffff, #fbf8fc) padding-box,
+    linear-gradient(135deg, rgba(111, 38, 61, 0.52), rgba(139, 92, 246, 0.48)) border-box;
   margin-top: 1.5rem;
   overflow: hidden;
 }
@@ -337,15 +369,15 @@ p {
 }
 
 .fact-card {
-  border-color: rgba(111, 38, 61, 0.28);
+  box-shadow: 0 14px 32px rgba(23, 19, 26, 0.08), 0 0 0 1px rgba(139, 92, 246, 0.06);
 }
 
 .panel {
-  border-top: 5px solid rgba(206, 17, 65, 0.9);
+  box-shadow: 0 18px 34px rgba(23, 19, 26, 0.09), inset 0 4px 0 rgba(139, 92, 246, 0.82);
 }
 
 .toc {
-  border-left: 6px solid rgba(111, 38, 61, 0.78);
+  box-shadow: 0 16px 34px rgba(23, 19, 26, 0.08), inset 6px 0 0 rgba(139, 92, 246, 0.82);
 }
 
 .fact-card span {
@@ -372,7 +404,7 @@ p {
 }
 
 .image-frame {
-  border-color: rgba(111, 38, 61, 0.28);
+  box-shadow: 0 18px 36px rgba(23, 19, 26, 0.1), 0 0 0 1px rgba(139, 92, 246, 0.05);
   margin: 1.5rem 0;
   overflow: hidden;
 }
@@ -388,6 +420,7 @@ p {
   margin: 1.5rem 0;
   overflow: hidden;
   width: 100%;
+  box-shadow: 0 16px 34px rgba(23, 19, 26, 0.09), 0 0 0 1px rgba(139, 92, 246, 0.05);
 }
 
 .table-row {
@@ -404,6 +437,7 @@ p {
 
 .table-row strong {
   color: var(--sixers);
+  font-weight: 900;
 }
 
 .stat-table th,
